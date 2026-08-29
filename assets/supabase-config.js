@@ -302,10 +302,12 @@
     var { data, error } = await client.rpc('user_get_hash', { uname: String(username || '') });
     if (error) { console.error('[SB] getUserHash：', error); return null; }
     var u = (typeof data === 'string') ? JSON.parse(data) : data;
+    // RETURNS TABLE 类型 RPC 返回数组，取第一个元素
+    if (Array.isArray(u)) u = u[0] || null;
     if (!u || !u.username) return null;
     return {
       username: u.username,
-      password: u.password || '',   // 密码哈希（sha1 加盐）
+      password: u.password || '',
       role:     u.role || 'editor',
       lastLogin: u.lastLogin || u.last_login || null
     };
