@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情 · 药品与环境工程学院学生会</title>
+    <meta name="description" content="四川化工职业技术学院药品与环境工程学院学生会新闻、部门、风采展示详情页。">
+    <link rel="stylesheet" href="styles.css?v=15">
+    <link rel="stylesheet" href="detail.css?v=15">
+    <script>/* 预加载 CMS 默认数据 + 桥接 */</script>
+</head>
+<body class="detail-page">
+<!-- ================ 顶栏：复用首页风格，支持品牌 + 返回首页 ================ -->
+<header class="site-navbar" id="detailNav">
+    <div class="nav-inner wrap">
+        <a class="nav-brand" href="index.html" aria-label="返回首页" data-cms-container="site.logo">
+            <div class="nav-brand-mark">药·环</div>
+            <div class="nav-brand-text">
+                <div class="nav-brand-title" data-brand="logoTitle">药品与环境工程学院</div>
+                <div class="nav-brand-sub" data-brand="logoSubtitle">学生会 · Student Union</div>
+            </div>
+        </a>
+        <nav class="nav-menu" aria-label="主导航">
+            <a href="index.html#home">首页</a>
+            <a href="index.html#about">关于我们</a>
+            <a href="index.html#structure">组织架构</a>
+            <a href="index.html#news">新闻活动</a>
+            <a href="index.html#showcase">风采展示</a>
+            <a href="index.html#contact">联系我们</a>
+        </nav>
+        <a href="index.html#contact" class="nav-cta">加入我们 →</a>
+    </div>
+</header>
+
+<!-- ================ 面包屑 ================ -->
+<div class="wrap breadcrumb" id="breadcrumb" aria-label="面包屑">
+    <a href="index.html">首页</a><span class="sep">/</span><a id="bcType" class="bc-type" href="index.html#news">—</a><span class="sep">/</span><a id="bcItem" class="current" href="#">—</a>
+</div>
+
+<!-- ================ 主体 ================ -->
+<main id="detailMain" class="wrap detail-main" role="main">
+    <!-- 正常渲染：由 detail.js 动态填充 -->
+    <!-- 404 渲染：由 detail.js 控制 404 容器显示 -->
+    <section id="detailContent" aria-live="polite" class="detail-loading">
+        <div class="placeholder-loading">
+            <div class="ph ph-h1"></div>
+            <div class="ph ph-meta"></div>
+            <div class="ph ph-hero"></div>
+            <div class="ph ph-p"></div>
+            <div class="ph ph-p"></div>
+            <div class="ph ph-p sh"></div>
+        </div>
+    </section>
+
+    <!-- 404 兜底（默认隐藏） -->
+    <section id="notFound" class="nf hidden" aria-hidden="true">
+        <div class="nf-code">404</div>
+        <h1 id="nfTitle">抱歉，内容不存在</h1>
+        <p id="nfDesc">您访问的信息可能已下线、编号不正确，或类型不支持。请返回首页继续浏览。</p>
+        <div class="nf-actions">
+            <a class="btn btn-primary" href="index.html">← 返回首页</a>
+            <a class="btn btn-ghost" href="index.html#news">查看全部新闻活动</a>
+            <a class="btn btn-ghost" href="index.html#structure">查看组织架构</a>
+        </div>
+    </section>
+</main>
+
+<!-- ================ 图集 Lightbox（全局共享，默认隐藏） ================ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="图片查看器">
+    <button class="lb-close" aria-label="关闭" data-lb-close>×</button>
+    <button class="lb-arrow lb-prev" aria-label="上一张" data-lb-act="prev">‹</button>
+    <figure class="lb-stage">
+        <img id="lbImg" src="" alt="">
+        <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-arrow lb-next" aria-label="下一张" data-lb-act="next">›</button>
+    <div class="lb-count" id="lbCount">1 / 1</div>
+</div>
+
+<!-- ================ 页脚（迷你版） ================ -->
+<footer class="detail-footer" id="detailFooter">
+    <div class="wrap df">
+        <div>
+            <div class="df-title" data-brand="siteTitle">药品与环境工程学院学生会</div>
+            <div class="df-sub">服务同学 · 引领成长 · 追求卓越 · 共创未来</div>
+        </div>
+        <div class="df-links">
+            <a href="index.html#news">新闻活动</a>
+            <a href="index.html#structure">组织架构</a>
+            <a href="index.html#showcase">风采展示</a>
+            <a href="index.html#contact">联系我们</a>
+        </div>
+    </div>
+    <div class="wrap df-copy" data-brand="footerCopy">© 2026 四川化工职业技术学院 · 药品与环境工程学院学生会 版权所有</div>
+</footer>
+
+<!-- ================ 数据 & 逻辑 ================ -->
+<script src="assets/supabase-config.js?v=15"></script>
+<script src="assets/data-defaults.js?v=15"></script>
+<script src="cms-bridge.js?v=15"></script>
+<script src="detail.js?v=15"></script>
+</body>
+</html>

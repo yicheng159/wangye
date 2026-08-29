@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-cms="site.title">四川化工职业技术学院 · 药品与环境工程学院学生会</title>
+    <link rel="stylesheet" href="styles.css?v=15">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" id="navbarLogo" data-cms-container="site.logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L8 10V22C8 28.63 12.87 34.47 20 36C27.13 34.47 32 28.63 32 22V10L20 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M15 20L18.5 23.5L26 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title" data-cms="site.logoTitle">药品与环境工程学院</span>
+                    <span class="logo-subtitle" data-cms="site.logoSubtitle">学生会 · Student Union</span>
+                </div>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我们</a></li>
+                <li><a href="#structure" class="nav-link">组织架构</a></li>
+                <li><a href="#news" class="nav-link">新闻活动</a></li>
+                <li><a href="#showcase" class="nav-link">风采展示</a></li>
+                <li><a href="#shortcuts" class="nav-link">快捷方式</a></li>
+                <li><a href="#contact" class="nav-link">联系我们</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero 轮播横幅 -->
+    <section id="home" class="hero">
+        <!-- 轮播图滑轨 -->
+        <div class="hero-carousel" id="heroCarousel">
+            <!-- Slide 1: 校园全景 -->
+            <div class="carousel-item active" data-index="0">
+                <div class="carousel-bg carousel-bg-1"></div>
+                <div class="carousel-overlay carousel-overlay-1"></div>
+            </div>
+            <!-- Slide 2: 图书馆 -->
+            <div class="carousel-item" data-index="1">
+                <div class="carousel-bg carousel-bg-2"></div>
+                <div class="carousel-overlay carousel-overlay-2"></div>
+            </div>
+            <!-- Slide 3: 夕阳校园 -->
+            <div class="carousel-item" data-index="2">
+                <div class="carousel-bg carousel-bg-3"></div>
+                <div class="carousel-overlay carousel-overlay-3"></div>
+            </div>
+        </div>
+
+        <!-- 轮播文案（居中显示，切换时重放动画） -->
+        <div class="hero-content" id="heroContent">
+            <h1 class="hero-title" id="heroTitle" data-cms="hero.title-main">
+                四川化工职业技术学院
+                <br>
+                <span class="hero-title-accent" id="heroTitleAccent" data-cms="hero.title-accent">药品与环境工程学院学生会</span>
+            </h1>
+            <p class="hero-subtitle" id="heroSubtitle" data-cms="hero.subtitle">
+                服务同学 · 引领成长 · 追求卓越 · 共创未来
+            </p>
+            <div class="hero-actions">
+                <a href="#about" class="btn btn-primary">了解我们</a>
+                <a href="#news" class="btn btn-outline">查看活动 →</a>
+            </div>
+        </div>
+
+        <!-- 左右切换按钮（z-index: 10） -->
+        <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="上一张">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </button>
+        <button class="carousel-btn carousel-next" id="carouselNext" aria-label="下一张">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+            </svg>
+        </button>
+
+        <!-- 指示器 dots（z-index: 10） -->
+        <div class="carousel-dots" id="carouselDots">
+            <button class="carousel-dot active" data-slide="0" aria-label="第1张"></button>
+            <button class="carousel-dot" data-slide="1" aria-label="第2张"></button>
+            <button class="carousel-dot" data-slide="2" aria-label="第3张"></button>
+        </div>
+
+        <!-- 向下滚动引导（z-index: 10） -->
+        <div class="hero-scroll">
+            <span>向下滚动</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- 数据统计条 -->
+    <section class="stats-bar">
+        <div class="container stats-grid" id="statsGrid" data-cms-container="stats">
+            <div class="stat-item">
+                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-label">职能部门</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="86">0</div>
+                <div class="stat-label">学生会成员</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="120">0</div>
+                <div class="stat-label">年度活动</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="3500">0</div>
+                <div class="stat-label">服务学生人次</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">关于我们</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <em>About Us</em>
+                    <span></span>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/about-section.jpg" alt="学生会团队协作" data-cms="about.image">
+                    <div class="about-image-decor"></div>
+                </div>
+                <div class="about-text">
+                    <h3 data-cms="about.heading">服务全院同学 · 搭建成长平台</h3>
+                    <p data-cms="about.paragraph1">
+                        药品与环境工程学院学生会是在学院党总支领导、团总支指导下的学生自治组织，
+                        是学院联系广大同学的桥梁和纽带。我们秉承"自我教育、自我管理、自我服务"的宗旨，
+                        团结带领全院同学勤奋学习、勇于实践、全面发展。
+                    </p>
+                    <p data-cms="about.paragraph2">
+                        学生会下设主席团及多个职能部门，围绕学院中心工作和同学成长需求，
+                        组织开展学术讲座、科技创新、文体活动、志愿服务、社会实践等丰富多彩的活动，
+                        为同学们的大学生活增添亮丽色彩，为个人成长成才提供广阔舞台。
+                    </p>
+                    <div class="about-values" id="aboutValues" data-cms-container="about.values">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                                    <path d="M2 17L12 22L22 17"/>
+                                    <path d="M2 12L12 17L22 12"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>服务为本</h4>
+                                <p>以同学需求为导向</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6V12L16 14"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>高效务实</h4>
+                                <p>追求卓越工作品质</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"/>
+                                    <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"/>
+                                    <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>团结协作</h4>
+                                <p>凝聚团队集体智慧</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>创新引领</h4>
+                                <p>开拓进取不断超越</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 组织架构 -->
+    <section id="structure" class="section structure-section">
+        <div class="container">
+            <div class="section-header section-header-light">
+                <h2 class="section-title" data-cms="structure.heading">九大部门 · 同心同行</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <em data-cms="structure.subheading">Organization · 组织架构</em>
+                    <span></span>
+                </div>
+                <p class="section-subtitle">
+                    学生会由主席团领导，下设多个职能部门，各司其职，协同运转
+                </p>
+            </div>
+
+            <!-- ========== 届次横幅（顶部：届数 / 学年 / 口号） ========== -->
+            <div class="term-banner" id="termBanner">
+                <div class="term-left">
+                    <div class="term-year" data-cms="structure.term.academicYear">2025—2026 学年</div>
+                    <div class="term-congress">
+                        <span class="term-congress-no" data-cms="structure.term.congressNo">第十二届</span>
+                        <span class="term-congress-lbl">学生会</span>
+                    </div>
+                    <div class="term-slogan" data-cms="structure.term.slogan">服务同学 · 引领成长 · 追求卓越 · 共创未来</div>
+                </div>
+                <div class="term-right">
+                    <div class="term-meta">
+                        <span class="term-meta-item">💼 主席团 <b data-cms="structure.term.presidiumCount">5 人</b></span>
+                        <span class="term-meta-item">🏢 部门 <b data-cms="structure.term.deptCount">9 个</b></span>
+                        <span class="term-meta-item">👥 总成员 <b data-cms="structure.term.totalSize">106 人</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== 主席团成员卡片 ========== -->
+            <div class="presidium" id="presidiumWrap">
+                <div class="presidium-head">
+                    <div class="presidium-badge">主席团</div>
+                    <h3>Presidium · 核心领导团队</h3>
+                    <p>学生会最高决策与统筹团队，负责学生会整体规划、重大决策与对外交流。</p>
+                </div>
+                <div class="presidium-grid" id="presidiumGrid" data-cms-container="structure.term.presidium">
+                    <!-- 由 applyStructure 动态渲染 -->
+                </div>
+            </div>
+
+            <!-- ========== 部门网格（部门名 / 图标 / 职能 / 部长 / 副部长 / 人数 / 电话） ========== -->
+            <div class="dept-head-inline">
+                <h3 class="dept-head-title">职能部门 · Departments</h3>
+                <p class="dept-head-sub">九大部门协同工作，全方位服务同学们成长与发展</p>
+            </div>
+            <div class="departments-grid" id="deptsGrid" data-cms-container="structure.depts">
+                <!-- 由 applyStructure 动态渲染 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 部门详情弹窗（点击部门卡打开） ========== -->
+    <div class="dept-modal" id="deptModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="dept-modal-mask" data-modal-close></div>
+        <div class="dept-modal-box" tabindex="-1">
+            <button class="dept-modal-close" aria-label="关闭" data-modal-close>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            </button>
+            <!-- 头图（无图 → 渐变占位） -->
+            <div class="dept-modal-hero" id="deptModalHero">
+                <img id="deptModalImg" alt="">
+                <div class="dept-modal-hero-mask"></div>
+                <div class="dept-modal-hero-inner">
+                    <span class="dept-modal-hero-icon" id="deptModalIcon"></span>
+                    <div>
+                        <span class="dept-modal-hero-badge" id="deptModalBadge">职能部门</span>
+                        <h3 id="deptModalName">部门名称</h3>
+                        <div class="dept-modal-hero-meta">
+                            <span id="deptModalSize">👥 —</span>
+                            <span>·</span>
+                            <span id="deptModalChair">部长：—</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 正文：详细介绍 + 人员信息 -->
+            <div class="dept-modal-body">
+                <div class="dept-modal-grid">
+                    <div class="dept-modal-main">
+                        <h4><span class="dot"></span>部门介绍</h4>
+                        <div class="dept-modal-desc" id="deptModalDesc"></div>
+                    </div>
+                    <aside class="dept-modal-side">
+                        <div class="side-card">
+                            <div class="side-title">团队成员</div>
+                            <div class="side-row"><span>部 长</span><b id="sideChair">—</b></div>
+                            <div class="side-row" id="sideViceRow" style="display:none;"><span>副部长</span><b id="sideVice">—</b></div>
+                            <div class="side-row"><span>编制人数</span><b id="sideSize">—</b></div>
+                        </div>
+                        <div class="side-card">
+                            <div class="side-title">联系方式</div>
+                            <div class="side-row side-contact"><span>📞</span><a id="sidePhone" href="#">—</a></div>
+                            <div class="side-row side-contact"><span>🏫</span><b>药环学院学生会</b></div>
+                        </div>
+                        <div class="dept-modal-cta">
+                            <a class="btn btn-ghost btn-block" id="deptModalFullBtn" href="detail.html?type=dept">📄 查看完整详情页 →</a>
+                            <button class="btn btn-primary btn-block" id="deptModalJoinBtn">💬 联系我们加入我们</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新闻活动 -->
+    <section id="news" class="section news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">新闻活动</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <em>News & Events</em>
+                    <span></span>
+                </div>
+                <p class="section-subtitle">
+                    实时了解学院最新动态与学生会精彩活动
+                </p>
+            </div>
+
+            <!-- 活动分类标签 -->
+            <div id="news-tabs-anchor" style="scroll-margin-top: 92px;"></div>
+            <div class="news-tabs" id="newsTabs" data-cms-container="newsCategories">
+                <button class="tab-btn active" data-tab="all">全部</button>
+                <button class="tab-btn" data-tab="academic">学术讲座</button>
+                <button class="tab-btn" data-tab="cultural">文体活动</button>
+                <button class="tab-btn" data-tab="volunteer">志愿服务</button>
+                <button class="tab-btn" data-tab="notice">通知公告</button>
+            </div>
+
+            <!-- 新闻列表 -->
+            <div class="news-grid" id="newsGrid" data-cms-container="news">
+                <article class="news-card featured" data-category="academic">
+                    <div class="news-image">
+                        <img src="assets/news-placeholder.jpg" alt="学术讲座">
+                        <span class="news-tag tag-academic">学术讲座</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-meta">
+                            <span>2026-08-15</span>
+                            <span>· 学习部</span>
+                        </div>
+                        <h3>我院成功举办"医药创新与绿色发展"主题学术讲座</h3>
+                        <p>
+                            本次讲座邀请到行业专家分享最新医药研发成果与环保技术应用，
+                            吸引了全院300余名师生参与，现场互动热烈...
+                        </p>
+                        <a href="detail.html?type=news&id=n-0" class="news-link">阅读全文 →</a>
+                    </div>
+                </article>
+
+                <article class="news-card" data-category="cultural">
+                    <div class="news-image-sm">
+                        <span class="news-tag tag-cultural">文体活动</span>
+                    </div>
+                    <div class="news-body-sm">
+                        <div class="news-meta"><span>2026-08-10</span><span>· 文艺部</span></div>
+                        <h4>"青春飞扬"迎新晚会节目海选火热开启</h4>
+                        <p>展现自我，绽放青春。欢迎各年级同学踊跃报名参与...</p>
+                        <a href="detail.html?type=news&id=n-1" class="news-link">详情 →</a>
+                    </div>
+                </article>
+
+                <article class="news-card" data-category="volunteer">
+                    <div class="news-image-sm">
+                        <span class="news-tag tag-volunteer">志愿服务</span>
+                    </div>
+                    <div class="news-body-sm">
+                        <div class="news-meta"><span>2026-08-05</span><span>· 外联部</span></div>
+                        <h4>"绿色环保行"志愿服务活动圆满结束</h4>
+                        <p>50余名志愿者走进社区开展环保宣传与垃圾分类实践...</p>
+                        <a href="detail.html?type=news&id=n-2" class="news-link">详情 →</a>
+                    </div>
+                </article>
+
+                <article class="news-card" data-category="notice">
+                    <div class="news-image-sm">
+                        <span class="news-tag tag-notice">通知公告</span>
+                    </div>
+                    <div class="news-body-sm">
+                        <div class="news-meta"><span>2026-08-01</span><span>· 办公室</span></div>
+                        <h4>关于2026级新生学生会招新的通知</h4>
+                        <p>新学年招新工作正式启动，欢迎有志于学生工作的同学报名...</p>
+                        <a href="detail.html?type=news&id=n-3" class="news-link">详情 →</a>
+                    </div>
+                </article>
+
+                <article class="news-card" data-category="academic">
+                    <div class="news-image-sm">
+                        <span class="news-tag tag-academic">学术讲座</span>
+                    </div>
+                    <div class="news-body-sm">
+                        <div class="news-meta"><span>2026-07-28</span><span>· 学习部</span></div>
+                        <h4>化学实验技能大赛报名开始</h4>
+                        <p>提升专业技能，展现学科风采。丰厚奖品等你来...</p>
+                        <a href="detail.html?type=news&id=n-4" class="news-link">详情 →</a>
+                    </div>
+                </article>
+
+                <article class="news-card" data-category="cultural">
+                    <div class="news-image-sm">
+                        <span class="news-tag tag-cultural">文体活动</span>
+                    </div>
+                    <div class="news-body-sm">
+                        <div class="news-meta"><span>2026-07-20</span><span>· 体育部</span></div>
+                        <h4>第七届"环境杯"篮球赛激情开赛</h4>
+                        <p>12支代表队激烈角逐，谁将问鼎冠军？...</p>
+                        <a href="detail.html?type=news&id=n-5" class="news-link">详情 →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="news-more-container">
+                <div class="news-pagination-badge" id="newsPaginationBadge">
+                    显示 <b id="newsShowingCount">0</b> / 共 <b id="newsTotalCount">0</b> 条
+                </div>
+                <div class="news-more-actions">
+                    <a href="#news-tabs-anchor" class="btn btn-outline-dark btn-filter-tabs" title="向上跳到分类筛选栏">📋 查看全部活动分类</a>
+                    <button type="button" class="btn btn-primary btn-load-more" id="newsLoadMoreBtn">加载更多内容 <span id="newsLoadMoreBadge"></span></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 风采展示 -->
+    <section id="showcase" class="section showcase-section">
+        <div class="container">
+            <div class="section-header section-header-light">
+                <h2 class="section-title">风采展示</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <em>Highlights</em>
+                    <span></span>
+                </div>
+                <p class="section-subtitle">
+                    记录美好瞬间 · 见证青春成长
+                </p>
+            </div>
+
+            <div class="showcase-grid" id="showcaseGrid" data-cms-container="showcase">
+                <div class="showcase-item showcase-tall">
+                    <img src="assets/showcase-1.jpg" alt="志愿服务">
+                    <div class="showcase-overlay">
+                        <h4>志愿公益</h4>
+                        <p>环保志愿行 · 共筑绿色家园</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="assets/showcase-2.jpg" alt="文艺晚会">
+                    <div class="showcase-overlay">
+                        <h4>文艺晚会</h4>
+                        <p>舞动青春 · 绽放光彩</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="assets/showcase-3.jpg" alt="专业实践">
+                    <div class="showcase-overlay">
+                        <h4>专业实践</h4>
+                        <p>实验实训 · 知行合一</p>
+                    </div>
+                </div>
+                <div class="showcase-item showcase-wide">
+                    <img src="assets/about-section.jpg" alt="团队协作">
+                    <div class="showcase-overlay">
+                        <h4>团队建设</h4>
+                        <p>携手同行 · 共创辉煌</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">联系我们</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <em>Contact Us</em>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-cms="contact.heading">期待与你相遇</h3>
+                    <p class="contact-desc" data-cms="contact.desc">
+                        无论你是希望加入学生会，还是有合作建议、活动咨询，
+                        欢迎通过以下方式与我们取得联系。我们期待听到你的声音！
+                    </p>
+
+                    <div class="contact-list" id="contactList" data-cms-container="contact.items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>地址</h5>
+                                <p data-cms="contact.address">四川省泸州市江阳区瓦窑坝62号<br>四川化工职业技术学院 · 药环学院</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>电话</h5>
+                                <p data-cms="contact.phone">0830-000-0000</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>邮箱</h5>
+                                <p data-cms="contact.email">yhxsh_scchem@163.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5>办公时间</h5>
+                                <p data-cms="contact.hours">周一至周五 18:00 - 21:00<br>周末 09:00 - 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links" id="socialLinks" data-cms-container="contact.socials">
+                        <span>关注我们：</span>
+                        <a href="#" class="social-icon" title="微信公众号" data-social="wechat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.5 8.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM14.5 8.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+                                <path d="M20.5 14c0-3.04-3.36-5.5-7.5-5.5s-7.5 2.46-7.5 5.5c0 1.75.96 3.32 2.46 4.38L7.5 20l1.76-1.36c.7.19 1.46.31 2.24.35"/>
+                                <path d="M16.5 16.5c2.21 0 4-1.57 4-3.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" title="QQ群" data-social="qq">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 21c0-4.42 3.58-8 8-8s8 3.58 8 8"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" title="微博" data-social="weibo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M8 13a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" title="抖音" data-social="douyin">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 3v12a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3"/>
+                                <path d="M15 3a6 6 0 0 0 6 6"/>
+                                <path d="M15 3v12a3 3 0 0 1-3 3 3 3 0 0 1-3-3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <h3>在线留言</h3>
+                    <p class="form-desc">有任何建议或咨询，请填写下方表单，我们会尽快回复你。</p>
+
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入你的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">联系方式</label>
+                        <input type="text" id="phone" name="phone" placeholder="手机号或邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">留言主题</label>
+                        <select id="subject" name="subject" data-cms-container="contact.formSubjects">
+                            <option value="join">学生会招新咨询</option>
+                            <option value="cooperation">活动合作</option>
+                            <option value="suggestion">意见建议</option>
+                            <option value="complaint">权益投诉</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">留言内容</label>
+                        <textarea id="message" name="message" rows="5" placeholder="请详细描述你的留言内容..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>提交留言</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快捷方式 -->
+    <section id="shortcuts" class="section shortcuts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-cms="shortcuts.heading">快捷入口</h2>
+                <div class="section-divider">
+                    <span></span>
+                    <em data-cms="shortcuts.subheading">Quick Links · 快捷方式</em>
+                    <span></span>
+                </div>
+            </div>
+            <div class="shortcuts-grid" id="shortcutsGrid" data-cms-container="shortcuts.items"></div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo" data-cms-container="site.logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4L8 10V22C8 28.63 12.87 34.47 20 36C27.13 34.47 32 28.63 32 22V10L20 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M15 20L18.5 23.5L26 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span data-cms="site.footerBrand">药品与环境工程学院学生会</span>
+                    </div>
+                    <p class="footer-slogan" data-cms="site.footerSlogan">
+                        服务同学 · 引领成长 · 追求卓越 · 共创未来
+                    </p>
+                    <p class="footer-address" data-cms="site.footerAddress">
+                        四川省泸州市江阳区瓦窑坝62号
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h5>快速导航</h5>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#structure">组织架构</a></li>
+                        <li><a href="#news">新闻活动</a></li>
+                        <li><a href="#showcase">风采展示</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h5 data-cms="site.footerLinksLabel">常用链接</h5>
+                    <ul data-cms-container="site.footerLinks">
+                        <li><a href="#">四川化工职业技术学院</a></li>
+                        <li><a href="#">药品与环境工程学院</a></li>
+                        <li><a href="#">教务管理系统</a></li>
+                        <li><a href="#">学工系统</a></li>
+                        <li><a href="#">图书资源</a></li>
+                        <li><a href="#">校园邮箱</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h5 data-cms="site.footerCtaLabel">加入我们</h5>
+                    <ul data-cms-container="site.footerCta">
+                        <li><a href="#">学生会招新</a></li>
+                        <li><a href="#">干部选拔</a></li>
+                        <li><a href="#">志愿者招募</a></li>
+                        <li><a href="#">提案反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-cms="site.footerCopyright">© 2026 四川化工职业技术学院 · 药品与环境工程学院学生会 版权所有</p>
+                <p class="footer-tech" data-cms="site.footerTech">Student Union of School of Pharmaceutical and Environmental Engineering</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <script src="assets/supabase-config.js?v=15"></script>
+    <script src="assets/data-defaults.js?v=15"></script>
+    <script src="cms-bridge.js?v=15"></script>
+    <script src="script.js?v=15"></script>
+</body>
+</html>
