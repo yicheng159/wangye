@@ -1308,43 +1308,50 @@
         body.addEventListener('submit', function (e) {
             e.preventDefault();
             var oldP = $('pwdOld').value, newP = $('pwdNew').value, newP2 = $('pwdNew2').value;
-            if (A.hashPassword(oldP) !== user.passwordHash) { toast('原密码错误', 'error'); return; }
-            if (!newP || newP.length < 6) { toast('新密码至少 6 位', 'warn'); return; }
+            if (!oldP || !newP || !newP2) { toast('请填写完整', 'warn'); return; }
+            if (newP.length < 6) { toast('新密码至少 6 位', 'warn'); return; }
             if (newP !== newP2) { toast('两次输入的新密码不一致', 'warn'); return; }
-            var newHash = A.hashPassword(newP);
             var btn = body.querySelector('button[type="submit"]');
             var originalText = btn ? btn.textContent : '';
-            if (btn) { btn.disabled = true; btn.textContent = '正在同步到云端…'; }
+            if (btn) { btn.disabled = true; btn.textContent = '云端校验中…'; }
 
-            // 先写本地，再同步云端；云端失败也保留本地（离线可用）
-            user.passwordHash = newHash;
-            localStorage.setItem(A.CONSTANTS.USER_KEY, JSON.stringify(user));
-
-            function done(ok, errMsg) {
-                A.pushLog('SAVE', ok ? '修改了管理员密码（已同步云端）' : '修改了管理员密码（云端同步失败，仅本地生效）');
+            // 从云端拉旧密码哈希校验
+            if (!window.SB || typeof window.SB.getUserHash !== 'function') {
+                toast('系统未初始化，请联系管理员', 'error', 3000);
                 if (btn) { btn.disabled = false; btn.textContent = originalText; }
-                body.reset();
-                if (ok) {
-                    toast('密码修改成功（已同步云端，其他设备需用新密码登录）', 'success', 3000);
-                } else {
-                    toast('密码已在本设备修改，但云端同步失败：' + (errMsg || '网络错误') + '。其他设备仍可用旧密码登录，请稍后重试。', 'warn', 5000);
-                }
+                return;
             }
-
-            if (window.SB && typeof window.SB.upsertUser === 'function') {
+            window.SB.getUserHash(user.username).then(function (sbUser) {
+                if (!sbUser) { toast('账号不存在', 'error'); return; }
+                if (sbUser.password !== A.hashPassword(oldP)) {
+                    toast('原密码错误', 'error');
+                    if (btn) { btn.disabled = false; btn.textContent = originalText; }
+                    return;
+                }
+                // 原密码正确 → 更新云端
+                if (btn) { btn.textContent = '正在同步到云端…'; }
                 window.SB.upsertUser({
                     username: user.username,
-                    password: newHash,   // 已经哈希过的值
-                    pwChanged: true,     // 告诉 upsertUser 这就是新密码哈希，直接写入
-                    role: user.role || 'admin'
+                    password: A.hashPassword(newP),
+                    pwChanged: true,
+                    role: user.role || sbUser.role || 'admin'
                 }).then(function (r) {
-                    done(!!(r && r.ok), r && r.error ? (r.error.message || String(r.error)) : null);
+                    if (r && r.ok) {
+                        A.pushLog('SAVE', '修改了管理员密码');
+                        toast('密码修改成功（云端已同步）', 'success', 3000);
+                        body.reset();
+                    } else {
+                        toast('云端修改失败：' + (r && r.error ? (r.error.message || String(r.error)) : '未知错误'), 'error', 5000);
+                    }
                 }).catch(function (err) {
-                    done(false, err && err.message ? err.message : String(err));
+                    toast('云端修改失败：' + (err && err.message ? err.message : String(err)), 'error', 5000);
+                }).finally(function () {
+                    if (btn) { btn.disabled = false; btn.textContent = originalText; }
                 });
-            } else {
-                done(true);  // 无 Supabase，纯本地模式
-            }
+            }).catch(function () {
+                toast('无法连接云端服务，请检查网络', 'error', 3000);
+                if (btn) { btn.disabled = false; btn.textContent = originalText; }
+            });
         });
         c1.appendChild(body);
         box.appendChild(c1);

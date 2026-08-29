@@ -727,73 +727,40 @@
             var u = $('username').value.trim();
             var p = $('password').value;
             if (!u || !p) { showError('请输入账号与密码'); return; }
-            var user = getStoredUser();
             var pwdHashed = hashPassword(p);
             var btn = form.querySelector('button[type="submit"]');
             var originalText = btn ? btn.textContent : '';
+            if (btn) { btn.disabled = true; btn.textContent = '云端校验中…'; }
 
-            function succeed(msg, srcUser) {
-                setLoginSession(u);
-                if (srcUser) {
-                    localStorage.setItem(USER_KEY, JSON.stringify({
-                        username: srcUser.username || u,
-                        passwordHash: srcUser.passwordHash || pwdHashed,
-                        role: srcUser.role || 'editor',
-                        syncedAt: Date.now()
-                    }));
-                }
-                toast(msg, 'success', 1400);
-                setTimeout(function () { location.href = 'dashboard.html'; }, 700);
-            }
             function fail(msg) {
                 showError(msg);
                 if (btn) { btn.disabled = false; btn.textContent = originalText; }
             }
 
-            // 1) 优先云端校验：密码修改后跨设备立即生效
-            if (window.SB && typeof window.SB.getUserHash === 'function') {
-                if (btn) { btn.disabled = true; btn.textContent = '云端校验中…'; }
-                window.SB.getUserHash(u).then(function (sbUser) {
-                    if (!sbUser || !sbUser.password) {
-                        // 云端无此账号 → 回退本地（兼容纯本地 admin 账号）
-                        if (user.username === u && user.passwordHash === pwdHashed) {
-                            succeed('登录成功（本地）', user);
-                        } else {
-                            fail('账号不存在或密码错误');
-                        }
-                        return;
-                    }
-                    if (sbUser.password !== pwdHashed) {
-                        fail('密码错误');
-                        return;
-                    }
-                    // 云端验证通过，同步写入本地缓存
-                    localStorage.setItem(USER_KEY, JSON.stringify({
-                        username: sbUser.username || u,
-                        passwordHash: sbUser.password,
-                        role: sbUser.role || 'editor',
-                        syncedAt: Date.now()
-                    }));
-                    if (window.SB && typeof window.SB.loginTouch === 'function') {
-                        window.SB.loginTouch(u);
-                    }
-                    succeed('登录成功，正在进入后台…', null);
-                }).catch(function () {
-                    // 云端不可达 → 离线降级：用本地缓存校验
-                    if (user.username === u && user.passwordHash === pwdHashed) {
-                        succeed('登录成功（离线模式）', user);
-                    } else {
-                        fail('账号不存在或密码错误（云端不可达）');
-                    }
-                });
-            } else {
-                // 无 Supabase，纯本地模式
-                if (user.username === u && user.passwordHash === pwdHashed) {
-                    succeed('登录成功', user);
-                } else {
-                    fail(user.username !== u ? '账号不存在' : '密码错误');
-                }
+            // 纯云端认证：必须连 Supabase，不降级本地
+            if (!window.SB || typeof window.SB.getUserHash !== 'function') {
+                fail('系统未初始化（缺少云端服务配置），请联系管理员');
+                return;
             }
+            window.SB.getUserHash(u).then(function (sbUser) {
+                if (!sbUser || !sbUser.password) {
+                    fail('账号不存在或密码错误');
+                    return;
+                }
+                if (sbUser.password !== pwdHashed) {
+                    fail('密码错误');
+                    return;
+                }
+                // 登录成功：只存 session token（不存密码哈希）
+                setLoginSession(u);
+                if (window.SB && typeof window.SB.loginTouch === 'function') {
+                    window.SB.loginTouch(u);
+                }
+                toast('登录成功，正在进入后台…', 'success', 1400);
+                setTimeout(function () { location.href = 'dashboard.html'; }, 700);
+            }).catch(function (err) {
+                fail('无法连接云端服务，请检查网络后重试');
+            });
         });
     }
 
